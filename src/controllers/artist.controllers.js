@@ -38,12 +38,12 @@ const update = catchError(async (req, res) => {
 
 const setGenre = catchError(async (req, res) => {
   const { id } = req.params;
-  const genre = await Genre.findByPk(id);
+  const artist = await Artist.findByPk(id);
 
-  await genre.setArtists(req.body);
+  await artist.setGenres(req.body);
 
-  const artists = await genre.getArtists();
-  return res.json(artists);
+  const genres = await artist.getGenres();
+  return res.json(genres);
 });
 
 module.exports = {
